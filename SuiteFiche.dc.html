@@ -15,17 +15,10 @@
     <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:{{ h2 }}px;line-height:1.1;margin:12px 0 0;max-width:760px;text-wrap:balance">L'art de bien se vêtir, au-delà des modes</h2>
     <p style="margin:18px 0 0;max-width:760px;font-size:19px;line-height:1.6;text-wrap:pretty">Le style classique obéit à des principes : des coupes, des étoffes, des accords qui ont fait leurs preuves au fil des générations. Ce guide les expose avec clarté, pièce par pièce, pour composer une garde-robe sobre, juste et durable.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:{{ colGap }}px;margin-top:{{ blockTop }}px;align-items:start">
-      <div style="display:flex;flex-direction:column;gap:14px">
-        <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#7A5418;border-bottom:1px solid #C9BDA3;padding-bottom:10px">I. L'élégance dans les circonstances de la vie</h3>
-        <p style="margin:0;font-size:17px;line-height:1.65;text-wrap:pretty">Un premier costume à choisir : comment reconnaître une confection de qualité, au-delà des apparences ?</p>
-        <p style="margin:0;font-size:17px;line-height:1.65;text-wrap:pretty">Un mariage, une soirée habillée : quelles sont les règles vestimentaires à respecter, et quand porter le smoking ?</p>
-        <p style="margin:0;font-size:17px;line-height:1.65;text-wrap:pretty">Un pardessus pour l'hiver : quelle coupe, quelle étoffe, quels détails feront la différence ?</p>
-        <p style="margin:0;font-size:17px;line-height:1.65;text-wrap:pretty">Et puis ces détails auxquels on prête parfois trop peu d'attention : la longueur d'une manche, l'accord d'une cravate, la qualité d'une retouche ou le soin apporté à une paire de souliers.</p>
-      </div>
       <div style="display:flex;flex-direction:column">
         <h3 style="margin:0">
           <button onClick="{{ toggleContent }}" aria-expanded="{{ contentOpen }}" style="width:100%;min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 24px;background:#FBF8F2;border:1px solid #1F2A38;color:#1D1B18;font-family:'Libre Franklin',sans-serif;font-size:16px;font-weight:600;cursor:pointer;text-align:left">
-            <span>II. Ce que contient le livre</span>
+            <span>I. Ce que contient le livre</span>
             <span style="font-size:22px;font-weight:400;line-height:1">{{ contentSign }}</span>
           </button>
         </h3>
@@ -40,13 +33,23 @@
           <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>Six annexes</strong>, dont un guide pour les budgets limités, une découverte de Savile Row et un annuaire des meilleures marques.</span></li>
         </ul>
         <p style="margin:4px 0 0;font-size:15px;line-height:1.5;color:#4A453D">252 pages, 20 chapitres, accompagnés d'illustrations et de schémas en couleur.</p>
-        <blockquote style="margin:8px 0 0;padding:4px 0 4px 18px;border-left:2px solid #9A6B1F;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:21px;line-height:1.4;color:#4A453D">[citation à choisir dans le livre]</blockquote>
         </div>
         </sc-if>
       </div>
       <div style="display:flex;flex-direction:column;gap:14px">
+        <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#7A5418;border-bottom:1px solid #C9BDA3;padding-bottom:10px">II. Des repères pour choisir et porter ses vêtements avec justesse</h3>
+        <p style="margin:0;font-size:17px;line-height:1.65;text-wrap:pretty">Comment appliquer les principes du style classique à ses propres choix vestimentaires ? Quelques exemples :</p>
+        <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;font-size:17px;line-height:1.5">
+          <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>Acheter un costume sans se fier aux apparences</strong> : distinguer un entoilage traditionnel d'une confection thermocollée, apprécier la coupe, les finitions et la qualité de l'étoffe.</span></li>
+          <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>Maîtriser les codes des différentes occasions</strong> : comprendre ce qui distingue le costume de ville, la tenue de campagne et les tenues de soirée, pour s'habiller avec justesse selon les circonstances.</span></li>
+          <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>Constituer un vestiaire de qualité sans dépenses excessives</strong> : savoir quelles pièces privilégier et reconnaître ce qui mérite réellement son prix.</span></li>
+          <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>Apprécier les détails qui font la différence</strong> : choisir les bons accords entre chemise, cravate et accessoires, comprendre l'importance d'une retouche et entretenir ses souliers dans les règles de l'art.</span></li>
+        </ul>
+        <blockquote style="margin:8px 0 0;padding:4px 0 4px 18px;border-left:2px solid #9A6B1F;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:21px;line-height:1.4;color:#4A453D">[citation à choisir dans le livre]</blockquote>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
         <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#7A5418;border-bottom:1px solid #C9BDA3;padding-bottom:10px">III. À qui s'adresse ce livre ?</h3>
-        <p style="margin:0;font-size:17px;line-height:1.65;text-wrap:pretty">Pour l'homme, jeune ou moins jeune, qui cultive le goût du vêtement bien choisi, sans imitation ni déguisement. Et pour ses proches, qui cherchent un présent de caractère, à lire, à consulter et à conserver.</p>
+        <p style="margin:0;font-size:17px;line-height:1.65;text-wrap:pretty">Pour l'homme, jeune ou moins jeune, qui souhaite s'habiller avec justesse, sans imitation ni déguisement, qu'il découvre les codes du style classique ou cherche à approfondir ses connaissances. Et pour ses proches, qui souhaitent lui offrir un présent de caractère, à lire, à consulter et à conserver.</p>
       </div>
     </div>
   </section>
