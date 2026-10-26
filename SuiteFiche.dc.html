@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="./image-slot.js"></script></helmet>
+<div style="font-family:'Libre Franklin',sans-serif;color:#1D1B18;background:#F8F5EE">
+
+  <section style="max-width:1240px;margin:0 auto;padding:{{ secPad }};border-top:1px solid #DDD5C4">
+    <div style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#7A5418;font-weight:600">Présentation</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:{{ h2 }}px;line-height:1.1;margin:12px 0 0;max-width:760px;text-wrap:balance">L'art de bien se vêtir, au-delà des modes</h2>
+    <p style="margin:18px 0 0;max-width:760px;font-size:19px;line-height:1.6;text-wrap:pretty">Le style classique obéit à des principes : des coupes, des étoffes, des accords qui ont fait leurs preuves au fil des générations. Ce guide les expose avec clarté, pièce par pièce, pour composer une garde-robe sobre, juste et durable.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:{{ colGap }}px;margin-top:{{ blockTop }}px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#7A5418;border-bottom:1px solid #C9BDA3;padding-bottom:10px">I. L'élégance dans les circonstances de la vie</h3>
+        <p style="margin:0;font-size:17px;line-height:1.65;text-wrap:pretty">Un premier costume à choisir : comment reconnaître une confection de qualité, au-delà des apparences ?</p>
+        <p style="margin:0;font-size:17px;line-height:1.65;text-wrap:pretty">Un mariage, une soirée habillée : quelles sont les règles vestimentaires à respecter, et quand porter le smoking ?</p>
+        <p style="margin:0;font-size:17px;line-height:1.65;text-wrap:pretty">Un pardessus pour l'hiver : quelle coupe, quelle étoffe, quels détails feront la différence ?</p>
+        <p style="margin:0;font-size:17px;line-height:1.65;text-wrap:pretty">Et puis ces détails auxquels on prête parfois trop peu d'attention : la longueur d'une manche, l'accord d'une cravate, la qualité d'une retouche ou le soin apporté à une paire de souliers.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#7A5418;border-bottom:1px solid #C9BDA3;padding-bottom:10px">II. Ce que contient le livre</h3>
+        <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;font-size:17px;line-height:1.5">
+          <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>Les fondements du style classique</strong> : son histoire, ses codes et ses grandes traditions.</span></li>
+          <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>Les pièces du vestiaire masculin</strong> : costume, gilet, chemise, cravate, veste sport, pardessus et tenues de cérémonie.</span></li>
+          <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>Les critères de qualité</strong> : étoffes, entoilage, confection et finitions.</span></li>
+          <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>L'art des accords</strong> : associer les vêtements, les couleurs et les accessoires.</span></li>
+          <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>L'entretien du vestiaire</strong> : préserver ses vêtements et prendre soin de ses chaussures.</span></li>
+          <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>Six annexes</strong>, dont un guide pour les budgets limités, une découverte de Savile Row et un annuaire des meilleures marques.</span></li>
+        </ul>
+        <p style="margin:4px 0 0;font-size:15px;line-height:1.5;color:#4A453D">252 pages, 20 chapitres, accompagnés d'illustrations et de schémas en couleur.</p>
+        <blockquote style="margin:8px 0 0;padding:4px 0 4px 18px;border-left:2px solid #9A6B1F;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:21px;line-height:1.4;color:#4A453D">[citation à choisir dans le livre]</blockquote>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#7A5418;border-bottom:1px solid #C9BDA3;padding-bottom:10px">III. À qui s'adresse ce livre ?</h3>
+        <p style="margin:0;font-size:17px;line-height:1.65;text-wrap:pretty">Pour l'homme, jeune ou moins jeune, qui cultive le goût du vêtement bien choisi, sans imitation ni déguisement. Et pour ses proches, qui cherchent un présent de caractère, à lire, à consulter et à conserver.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#F1ECE1;border-top:1px solid #DDD5C4;border-bottom:1px solid #DDD5C4">
+    <div style="max-width:1240px;margin:0 auto;padding:{{ secPad }}">
+      <div style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#7A5418;font-weight:600">Sommaire</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:{{ h2 }}px;line-height:1.1;margin:12px 0 0">Quatre parties, vingt chapitres, six annexes</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:#C9BDA3;border:1px solid #C9BDA3;margin-top:{{ blockTop }}px">
+        <sc-for list="{{ parts }}" as="p" hint-placeholder-count="4">
+          <div style="background:#FBF8F2;padding:24px;display:flex;flex-direction:column;gap:8px">
+            <div style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#7A5418;font-weight:600">{{ p.label }}</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;line-height:1.15">{{ p.title }}</div>
+            <div style="font-size:15px;color:#4A453D;line-height:1.5">{{ p.summary }}</div>
+            <div style="font-size:14px;color:#4A453D;margin-top:auto;padding-top:8px">{{ p.range }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="margin-top:24px;background:#FBF8F2;border:1px solid #C9BDA3;padding:24px;display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#7A5418;font-weight:600">Annexes</div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px 28px;font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:600">
+          <span>Guide pour les amateurs au budget limité</span>
+          <span>Savile Row, le berceau du style classique</span>
+          <span>Annuaire des meilleures marques</span>
+        </div>
+        <div style="font-size:15px;color:#4A453D">Ainsi que : Les dix étapes vers l'élégance masculine · L'habit spirituel · Bibliographie</div>
+      </div>
+      <button onClick="{{ toggleToc }}" aria-expanded="{{ tocOpen }}" style="margin-top:24px;width:100%;min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 24px;background:#FBF8F2;border:1px solid #1F2A38;color:#1D1B18;font-family:'Libre Franklin',sans-serif;font-size:16px;font-weight:600;cursor:pointer;text-align:left">
+        <span>{{ tocLabel }}</span>
+        <span style="font-size:22px;font-weight:400;line-height:1">{{ tocSign }}</span>
+      </button>
+      <sc-if value="{{ tocOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#FBF8F2;border:1px solid #1F2A38;border-top:0;padding:8px 24px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 48px">
+          <sc-for list="{{ tocParts }}" as="tp" hint-placeholder-count="5">
+            <div style="padding-top:20px">
+              <div style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#7A5418;font-weight:600;padding-bottom:6px">{{ tp.head }}</div>
+              <sc-for list="{{ tp.items }}" as="c" hint-placeholder-count="4">
+                <div style="display:flex;gap:12px;align-items:baseline;padding:9px 0;border-bottom:1px solid #E4DCCB;font-size:15px;line-height:1.4">
+                  <span style="min-width:22px;color:#4A453D">{{ c.n }}</span>
+                  <span style="flex:1">{{ c.t }}</span>
+                  <span style="color:#4A453D;font-variant-numeric:tabular-nums">{{ c.p }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <section id="avis" style="max-width:1240px;margin:0 auto;padding:{{ secPad }}">
+    <div style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#7A5418;font-weight:600">Avis des lecteurs</div>
+    <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px 32px;margin-top:12px">
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:{{ h2 }}px;line-height:1.1;margin:0">Ce qu'en disent nos lecteurs</h2>
+      <div style="display:flex;align-items:center;gap:10px;font-size:16px"><span style="color:#8A5A14;letter-spacing:2px;font-size:18px">★★★★★</span><strong>5/5</strong><span style="color:#4A453D">· 5 avis</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:{{ blockTop }}px">
+      <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="5">
+        <figure style="margin:0;background:#FFFDF8;border:1px solid #DDD5C4;padding:26px;display:flex;flex-direction:column;gap:14px">
+          <div style="color:#8A5A14;letter-spacing:2px;font-size:15px" aria-label="5 sur 5">★★★★★</div>
+          <blockquote style="margin:0;font-family:'Cormorant Garamond',serif;font-size:21px;line-height:1.4;text-wrap:pretty">« {{ r.text }} »</blockquote>
+          <figcaption style="margin-top:auto;font-size:15px;font-weight:600">{{ r.name }}</figcaption>
+        </figure>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="background:#1F2A38;color:#F3EEE3">
+    <div style="max-width:1240px;margin:0 auto;padding:{{ secPad }};display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:{{ colGap }}px;align-items:center">
+      <div style="aspect-ratio:4/3;width:100%;max-width:520px">
+        <image-slot id="fondateur" shape="rect" placeholder="Portrait du fondateur ou photo de la maison" style="width:100%;height:100%"></image-slot>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <div style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#E3C88E;font-weight:600">À propos</div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:{{ h2 }}px;line-height:1.1;margin:0">Une maison d'édition de tradition</h2>
+        <p style="margin:0;font-size:17px;line-height:1.65">Maison indépendante, Les Éditions L'Honnête Homme publient des ouvrages de savoir-vivre, d'élégance et de tradition catholique. Chaque titre poursuit un même but : transmettre des usages éprouvés, avec clarté et sans pédanterie.</p>
+        <p style="margin:0;font-size:17px;line-height:1.65">La maison a été fondée par Mathias Gautier, avec une conviction : la tenue, les manières et la vie intérieure relèvent d'un même art de vivre, qui mérite d'être transmis.</p>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px">
+          <a href="#" style="color:#F3EEE3;font-weight:600;font-size:16px;min-height:44px;display:flex;align-items:center;text-underline-offset:4px">Qui sommes-nous ?</a>
+          <span style="font-size:13px;color:#C9C2B3;font-style:italic">Contenu provisoire, à confirmer</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1240px;margin:0 auto;padding:{{ secPad }}">
+    <div style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#7A5418;font-weight:600">Caractéristiques</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:{{ h2 }}px;line-height:1.1;margin:12px 0 0">Fiche technique</h2>
+    <div style="margin-top:{{ blockTop }}px;border-top:1px solid #1D1B18;overflow-x:auto">
+      <div style="display:grid;grid-template-columns:{{ specCols }};font-size:15px;min-width:0">
+        <div style="padding:14px 12px 14px 0;border-bottom:1px solid #C9BDA3;color:#4A453D"></div>
+        <div style="padding:14px 12px;border-bottom:1px solid #C9BDA3;font-weight:700">Broché</div>
+        <div style="padding:14px 12px;border-bottom:1px solid #C9BDA3;font-weight:700">Beau livre</div>
+        <sc-for list="{{ specs }}" as="s" hint-placeholder-count="10">
+          <div style="padding:13px 12px 13px 0;border-bottom:1px solid #E4DCCB;color:#4A453D">{{ s.k }}</div>
+          <div style="padding:13px 12px;border-bottom:1px solid #E4DCCB;font-style:{{ s.aStyle }};color:{{ s.aColor }}">{{ s.a }}</div>
+          <div style="padding:13px 12px;border-bottom:1px solid #E4DCCB;font-style:{{ s.bStyle }};color:{{ s.bColor }}">{{ s.b }}</div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#F1ECE1;border-top:1px solid #DDD5C4">
+    <div style="max-width:1240px;margin:0 auto;padding:{{ secPad }}">
+      <div style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#7A5418;font-weight:600">Du même rayon</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:{{ h2 }}px;line-height:1.1;margin:12px 0 0;text-wrap:balance">Complétez votre commande, frais de port inchangés</h2>
+      <p style="margin:12px 0 0;font-size:17px;color:#4A453D">Le port reste fixé à 5 € par commande, quel que soit le nombre de livres.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:{{ blockTop }}px">
+        <sc-for list="{{ related }}" as="b" hint-placeholder-count="2">
+          <article style="background:#FBF8F2;border:1px solid #DDD5C4;padding:20px;display:grid;grid-template-columns:112px 1fr;gap:20px;align-items:center">
+            <div style="width:112px;height:168px;box-shadow:0 10px 18px -8px rgba(30,20,10,.5),0 2px 4px rgba(30,20,10,.25)">
+              <image-slot id="{{ b.slot }}" shape="rect" placeholder="Couverture" style="width:100%;height:100%"></image-slot>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+              <div style="font-size:13px;color:#4A453D">{{ b.cat }}</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600;line-height:1.15">{{ b.title }}</div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px">
+                <button style="min-height:44px;padding:0 16px;background:transparent;border:1px solid #1F2A38;color:#1F2A38;font-family:'Libre Franklin',sans-serif;font-weight:600;font-size:15px;cursor:pointer">Ajouter au panier</button>
+                <a href="#" style="min-height:44px;display:flex;align-items:center;padding:0 6px;color:#1D1B18;font-size:15px;text-underline-offset:4px">Voir le livre</a>
+              </div>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:760px;margin:0 auto;padding:{{ secPad }};text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px">
+    <div style="width:48px;height:1px;background:#9A6B1F"></div>
+    <p style="margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:{{ quote }}px;line-height:1.35;text-wrap:balance">L'élégance ne se décrète pas : elle se cultive, avec patience et mesure. Puisse ce guide vous accompagner sur ce chemin.</p>
+    <div style="font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:#4A453D">Les Éditions L'Honnête Homme</div>
+  </section>
+
+  <footer style="background:#1D1B18;color:#E9E3D6">
+    <div style="max-width:1240px;margin:0 auto;padding:{{ footPad }};display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:36px">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600">La lettre de la maison</div>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:#CFC7B6">Une fois par mois : un conseil de savoir-vivre, une lecture choisie et nos nouvelles parutions. Désinscription en un clic.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <input placeholder="Votre adresse e-mail" style="flex:1;min-width:180px;height:48px;padding:0 14px;background:#2A2723;border:1px solid #6B655A;color:#F3EEE3;font-family:'Libre Franklin',sans-serif;font-size:16px">
+          <button style="height:48px;padding:0 20px;background:#F3EEE3;color:#1D1B18;border:0;font-family:'Libre Franklin',sans-serif;font-weight:600;font-size:15px">S'inscrire</button>
+        </div>
+      </div>
+      <nav style="display:flex;flex-direction:column;gap:2px;font-size:15px">
+        <a href="#" style="color:#E9E3D6;min-height:40px;display:flex;align-items:center;text-decoration:none">Qui sommes-nous ?</a>
+        <a href="#" style="color:#E9E3D6;min-height:40px;display:flex;align-items:center;text-decoration:none">Conditions générales de vente</a>
+        <a href="#" style="color:#E9E3D6;min-height:40px;display:flex;align-items:center;text-decoration:none">Mentions légales</a>
+        <a href="#" style="color:#E9E3D6;min-height:40px;display:flex;align-items:center;text-decoration:none">Contact</a>
+      </nav>
+      <div style="font-size:15px;line-height:1.7;color:#CFC7B6">Paiement sécurisé par carte bancaire et PayPal<br>Port fixe de 5 € par commande<br>Satisfait ou remboursé sous 14 jours</div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;device&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;desktop&quot;,&quot;mobile&quot;],&quot;default&quot;:&quot;desktop&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { tocOpen: false };
+  renderVals() {
+    const m = this.props.device === 'mobile';
+    const ch = (n, t, p) => ({ n, t, p });
+    const toc = [
+      { head: 'Première partie · Les fondements du style classique', items: [ch(1,'Définition du style classique',21), ch(2,'Les catégories du style classique',29), ch(3,'Le complet de ville',35), ch(4,'Les autres costumes',43)] },
+      { head: 'Deuxième partie · Choix et entretien des tenues', items: [ch(5,'Le choix du costume',51), ch(6,'Le gilet, pièce clef du complet',57), ch(7,'Les critères de qualité d\u2019un bon costume',61), ch(8,'Secrets d\u2019entretien d\u2019un costume',67), ch(9,'Conseils pour le port du costume',73), ch(10,'La belle chemise',83), ch(11,'La cravate',101)] },
+      { head: 'Troisième partie · Accessoires et pièces complémentaires', items: [ch(12,'Les accessoires de ville et de campagne',117), ch(13,'Les hauts de corps',121), ch(14,'La veste sport',125), ch(15,'Les pantalons',139), ch(16,'Les chaussettes',151)] },
+      { head: 'Quatrième partie · Élégance et occasions spéciales', items: [ch(17,'Les chaussures, jusqu\u2019au cirage',157), ch(18,'Les pardessus',181), ch(19,'Les imperméables',193), ch(20,'Les tenues mondaines',203)] },
+      { head: 'Annexes', items: [ch('—','Guide pour les amateurs au budget limité',219), ch('—','Les dix étapes vers l\u2019élégance masculine',223), ch('—','Savile Row, le berceau du style classique',229), ch('—','L\u2019habit spirituel',233), ch('—','Bibliographie',237), ch('—','Annuaire des meilleures marques',239)] }
+    ];
+    const na = { s: 'italic', c: '#6B655A' }, ok = { s: 'normal', c: '#1D1B18' };
+    const spec = (k, a, b, aKnown = true, bKnown = true) => ({ k, a, b, aStyle: aKnown ? ok.s : na.s, aColor: aKnown ? ok.c : na.c, bStyle: bKnown ? ok.s : na.s, bColor: bKnown ? ok.c : na.c });
+    const open = this.state.tocOpen;
+    return {
+      secPad: m ? '56px 20px' : '96px 40px',
+      footPad: m ? '44px 20px 56px' : '64px 40px',
+      h2: m ? 32 : 44, quote: m ? 26 : 34,
+      colGap: m ? 32 : 48, blockTop: m ? 28 : 44,
+      specCols: m ? 'minmax(96px,1fr) minmax(0,1fr) minmax(0,1fr)' : '1.2fr 1fr 1fr',
+      parts: [
+        { label: 'Première partie', title: 'Les fondements du style classique', summary: 'Définition, catégories, le complet de ville et les autres costumes.', range: 'Chapitres 1 à 4' },
+        { label: 'Deuxième partie', title: 'Choix et entretien des tenues', summary: 'Le costume, le gilet, la qualité, l\u2019entretien, la chemise, la cravate.', range: 'Chapitres 5 à 11' },
+        { label: 'Troisième partie', title: 'Accessoires et pièces complémentaires', summary: 'Accessoires, hauts de corps, veste sport, pantalons, chaussettes.', range: 'Chapitres 12 à 16' },
+        { label: 'Quatrième partie', title: 'Élégance et occasions spéciales', summary: 'Chaussures et cirage, pardessus, imperméables, tenues mondaines.', range: 'Chapitres 17 à 20' }
+      ],
+      tocOpen: open, tocParts: toc,
+      tocLabel: open ? 'Masquer le sommaire complet' : 'Voir le sommaire complet · 20 chapitres et annexes',
+      tocSign: open ? '−' : '+',
+      toggleToc: () => this.setState(s => ({ tocOpen: !s.tocOpen })),
+      reviews: [
+        { name: 'Teddy G.', text: 'Toutes les bases pour apprendre à s\u2019habiller sobrement mais avec classe. Je recommande fortement.' },
+        { name: 'David G.', text: 'Une vraie bible sur le style classique, expliqué en toute simplicité, agrémenté de dessins et de photos. Une bonne idée de cadeau ; tout à fait l\u2019ouvrage que je cherchais.' },
+        { name: 'Eigengrau', text: 'Livre à recommander à toute personne en quête d\u2019élégance, sans tomber dans l\u2019imitation de surface.' },
+        { name: 'Jean', text: 'Il est bon, pour soi comme pour les autres, d\u2019être distingué sans être un dandy. Mon frère me fait souvent remarquer que je ne suis ni délicat ni élégant : je suis ravi de pouvoir enfin changer cela.' },
+        { name: 'Sylvain', text: 'Enfin une synthèse pratique sur le sujet.' }
+      ],
+      specs: [
+        spec('Éditeur', 'Les Éditions L\u2019Honnête Homme', 'Les Éditions L\u2019Honnête Homme'),
+        spec('Parution', '14 décembre 2024', 'À compléter', true, false),
+        spec('Langue', 'Français', 'Français'),
+        spec('Pages', '252', '252'),
+        spec('Format', '15,6 × 23,4 cm', '15,6 × 23,4 cm'),
+        spec('Épaisseur', '1,45 cm', 'Environ 2 cm'),
+        spec('Reliure', 'Couverture souple', 'Couverture rigide'),
+        spec('Mise en page', 'Classique', 'Élégante'),
+        spec('Illustrations', 'En couleur', 'En couleur'),
+        spec('Poids', '463 g', 'À compléter', true, false),
+        spec('ISBN-13', '979-8303711471', 'À compléter', true, false)
+      ],
+      related: [
+        { slot: 'couv-gentleman', cat: 'Savoir-vivre et bienséance', title: 'Le Petit Guide du parfait gentleman' },
+        { slot: 'couv-prudence', cat: 'Savoir-vivre et bienséance', title: 'L\u2019Art de la conversation' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

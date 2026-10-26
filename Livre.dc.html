@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="./image-slot.js"></script></helmet>
+<div style="position:relative;width:{{ boxW }}px;height:{{ boxH }}px;display:flex;align-items:center;justify-content:center;perspective:1800px">
+  <div style="position:absolute;left:{{ shadowLeft }};bottom:{{ shadowBottom }}px;width:{{ shadowW }}px;height:{{ shadowH }}px;transform:translateX(-50%);background:radial-gradient(ellipse at center, rgba(40,28,15,.42) 0%, rgba(40,28,15,.16) 45%, rgba(40,28,15,0) 72%);filter:blur(6px)"></div>
+  <div style="position:relative;width:{{ W }}px;height:{{ H }}px;transform-style:preserve-3d;transform:{{ rot }}">
+    <div style="position:absolute;inset:0;transform:translateZ(-{{ tHalf }}px) rotateY(180deg);background:#1c1f24;border-radius:{{ radius }}"></div>
+    <div style="position:absolute;top:{{ pageInset }}px;left:{{ sideLeft }}px;width:{{ t }}px;height:{{ pagesH }}px;transform:rotateY(90deg);background:{{ pagesBg }}"></div>
+    <div style="position:absolute;top:0;left:-{{ tHalf }}px;width:{{ t }}px;height:{{ H }}px;transform:rotateY(-90deg);background:{{ spineBg }};display:flex;align-items:center;justify-content:center;overflow:hidden">
+      <div style="writing-mode:vertical-rl;font-family:'Cormorant Garamond',serif;font-weight:600;letter-spacing:.08em;color:#E9DFC8;font-size:{{ spineFont }}px;white-space:nowrap">LE GUIDE DU STYLE CLASSIQUE ET SARTORIAL</div>
+    </div>
+    <div style="position:absolute;inset:0;transform:translateZ({{ tHalf }}px);border-radius:{{ radius }};overflow:hidden;background:#2a2d33;box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)">
+      <sc-if value="{{ isBroche }}" hint-placeholder-val="{{ true }}">
+        <image-slot id="couv-broche" shape="rect" fit="cover" placeholder="Couverture brochée (fichier réel)" style="width:100%;height:100%"></image-slot>
+      </sc-if>
+      <sc-if value="{{ isBeau }}" hint-placeholder-val="{{ false }}">
+        <image-slot id="couv-beau" shape="rect" fit="cover" placeholder="Couverture beau livre (fichier réel)" style="width:100%;height:100%"></image-slot>
+      </sc-if>
+      <div style="position:absolute;inset:0;pointer-events:none;background:{{ sheen }}"></div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:400,&quot;height&quot;:500},&quot;edition&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;broche&quot;,&quot;beau&quot;],&quot;default&quot;:&quot;broche&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;angle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;face&quot;,&quot;tq&quot;,&quot;dos&quot;],&quot;default&quot;:&quot;tq&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;w&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:260,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const ed = this.props.edition === 'beau' ? 'beau' : 'broche';
+    const angle = this.props.angle || 'tq';
+    const W = Number(this.props.w) || 260;
+    const H = Math.round(W * 1.5);
+    const beau = ed === 'beau';
+    const side = this.props.light === 'side';
+    const t = Math.max(4, Math.round(W * (beau ? 0.135 : 0.075)));
+    const rot = { face: 'rotateY(-9deg)', tq: 'rotateY(-30deg) rotateX(3deg)', dos: 'rotateY(60deg) rotateX(2deg)' }[angle] || 'rotateY(-30deg)';
+    const inset = beau ? Math.max(2, Math.round(W * 0.016)) : 0;
+    const stripes = 'repeating-linear-gradient(90deg,#F1E9D6 0 1px,#E2D6BD 1px 2px)';
+    return {
+      isBroche: !beau, isBeau: beau,
+      W, H, t, tHalf: t / 2,
+      boxW: Math.round(W * 1.25), boxH: Math.round(H * 1.12),
+      rot,
+      radius: beau ? '0' : '0 5px 5px 0',
+      pageInset: inset, pagesH: H - inset * 2,
+      sideLeft: W - t / 2 - (beau ? inset : 0),
+      pagesBg: beau ? stripes : 'linear-gradient(90deg,#3a3d42 0 1px,transparent 1px calc(100% - 1px),#3a3d42 calc(100% - 1px)),' + stripes,
+      spineBg: beau
+        ? 'linear-gradient(180deg,transparent 9%,#9A7A3A 9% 9.6%,transparent 9.6% 90.4%,#9A7A3A 90.4% 91%,transparent 91%),linear-gradient(90deg,#141a24,#243044 50%,#141a24)'
+        : 'linear-gradient(90deg,#1d2026,#2c3038 50%,#1d2026)',
+      spineFont: Math.max(5, Math.min(13, Math.round(t * 0.34))),
+      sheen: beau
+        ? 'linear-gradient(90deg,rgba(0,0,0,.28) 0,rgba(0,0,0,.05) 2.5%,rgba(255,255,255,.10) 4%,rgba(0,0,0,.22) 6.5%,rgba(255,255,255,.07) 7.5%,rgba(255,255,255,0) 11%),linear-gradient(130deg,rgba(255,236,205,.20),rgba(255,236,205,0) 40%,rgba(0,0,0,.14))'
+        : 'linear-gradient(90deg,rgba(0,0,0,.22) 0,rgba(0,0,0,0) 3%,rgba(255,255,255,.09) 4.5%,rgba(255,255,255,0) 7%),linear-gradient(130deg,rgba(255,236,205,.16),rgba(255,236,205,0) 40%,rgba(0,0,0,.12))',
+      shadowW: Math.round(W * (side ? 1.3 : 1.15)), shadowH: Math.round(W * (side ? 0.1 : 0.12)), shadowBottom: Math.round(H * 0.01), shadowLeft: side ? '58%' : '50%'
+    };
+  }
+}
+</script>
+</body>
+</html>

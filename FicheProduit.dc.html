@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="./image-slot.js"></script><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet"><style>a{color:#1D1B18}a:hover{color:#7A5418}</style></helmet>
+<div style="position:relative;background:#F8F5EE;color:#1D1B18;font-family:'Libre Franklin',sans-serif;min-height:100%">
+  <dc-import name="Header" device="{{ device }}" count="{{ count }}" hint-size="100%,64px"></dc-import>
+
+  <sc-if value="{{ bannerDesktop }}" hint-placeholder-val="{{ false }}">
+    <div role="status" style="background:#1F2A38;color:#F8F5EE">
+      <div style="max-width:1240px;margin:0 auto;padding:16px 40px;display:flex;align-items:center;gap:20px">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E3C88E" stroke-width="1.6"><circle cx="12" cy="12" r="10"></circle><path d="M7.5 12.5l3 3 6-6.5"></path></svg>
+        <p style="margin:0;font-size:16px;line-height:1.4">« Le Guide du style classique et sartorial », édition {{ editionLower }}, a été ajouté à votre panier.</p>
+        <a href="#" style="flex:none;height:44px;padding:0 22px;display:flex;align-items:center;background:#F8F5EE;color:#1F2A38;font-weight:700;font-size:15px;text-decoration:none">Voir le panier</a>
+        <button onClick="{{ closeBanner }}" aria-label="Fermer" style="margin-left:auto;width:44px;height:44px;background:transparent;border:0;color:#F8F5EE;font-size:24px;cursor:pointer">×</button>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ bannerMobile }}" hint-placeholder-val="{{ false }}">
+    <div role="status" style="background:#1F2A38;color:#F8F5EE;padding:18px 20px 20px;display:flex;flex-direction:column;gap:18px">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <svg style="flex:none;margin-top:1px" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E3C88E" stroke-width="1.6"><circle cx="12" cy="12" r="10"></circle><path d="M7.5 12.5l3 3 6-6.5"></path></svg>
+        <p style="margin:0;font-size:16px;line-height:1.45;flex:1">« Le Guide du style classique et sartorial », édition {{ editionLower }}, a été ajouté à votre panier.</p>
+        <button onClick="{{ closeBanner }}" aria-label="Fermer" style="flex:none;width:44px;height:44px;margin:-10px -10px 0 0;background:transparent;border:0;color:#F8F5EE;font-size:24px">×</button>
+      </div>
+      <a href="#" style="height:50px;display:flex;align-items:center;justify-content:center;background:#F8F5EE;color:#1F2A38;font-weight:700;font-size:16px;text-decoration:none">Voir le panier</a>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <nav style="max-width:1240px;margin:0 auto;padding:22px 40px 0;font-size:14px;color:#4A453D;display:flex;gap:8px;flex-wrap:wrap">
+      <a href="#" style="color:#4A453D">Accueil</a><span>/</span><a href="#" style="color:#4A453D">Nos livres</a><span>/</span><a href="#" style="color:#4A453D">Élégance masculine et style vestimentaire</a><span>/</span><span style="color:#1D1B18">Le Guide du style classique et sartorial</span>
+    </nav>
+  </sc-if>
+
+  <main style="max-width:1240px;margin:0 auto;padding:{{ gridPad }};display:grid;grid-template-columns:{{ gridCols }};grid-template-areas:{{ gridAreas }};grid-template-rows:auto 1fr;column-gap:56px;row-gap:{{ rowGap }}px">
+
+    <div style="grid-area:h;padding:{{ sidePad }};display:flex;flex-direction:column;gap:12px">
+      <div style="font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#7A5418;font-weight:600">Élégance masculine</div>
+      <h1 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:{{ h1 }}px;line-height:1.05;text-wrap:balance">Le Guide du style classique et sartorial</h1>
+      <div style="font-size:16px;color:#4A453D">Par les Éditions L'Honnête Homme</div>
+      <a href="#avis" style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;text-decoration:none;color:#1D1B18;min-height:44px">
+        <span style="color:#8A5A14;letter-spacing:2px;font-size:17px" aria-hidden="true">★★★★★</span>
+        <span style="font-size:15px"><strong>5/5</strong> <span style="color:#4A453D;text-decoration:underline;text-underline-offset:3px">(5 avis)</span></span>
+        <span style="font-size:15px;font-style:italic;color:#4A453D;font-family:'Cormorant Garamond',serif;font-size:18px">« Toutes les bases pour s'habiller sobrement mais avec classe. »</span>
+      </a>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <p style="margin:6px 0 0;font-size:18px;line-height:1.55;max-width:500px;text-wrap:pretty">Les principes intemporels du vestiaire masculin, pièce par pièce, pour se composer une garde-robe sobre et juste, à l'abri des modes.</p>
+      </sc-if>
+    </div>
+
+    <div style="grid-area:g;align-self:start;position:{{ galleryPos }};top:24px;display:flex;flex-direction:column;gap:12px">
+      <div style="position:relative">
+        <div ref="{{ trackRef }}" onScroll="{{ onScroll }}" style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;aspect-ratio:1/1;background:#F1ECE1">
+          <sc-for list="{{ slides }}" as="s" hint-placeholder-count="1">
+            <div style="flex:0 0 100%;scroll-snap-align:start;position:relative;overflow:hidden">
+              <sc-if value="{{ s.isScene }}" hint-placeholder-val="{{ true }}">
+                <div style="position:absolute;inset:0;background:radial-gradient(110% 75% at 16% 6%,rgba(255,212,155,.34),rgba(255,212,155,0) 58%),linear-gradient(180deg,#4A3B2E 0%,#3A2E24 66%)"></div>
+                <div style="position:absolute;left:0;right:0;bottom:0;height:34%;background:repeating-linear-gradient(92deg,rgba(0,0,0,.07) 0 2px,rgba(255,255,255,.035) 2px 9px,rgba(0,0,0,.045) 9px 14px),linear-gradient(180deg,#6E4C31,#4A3220);box-shadow:inset 0 2px 0 rgba(255,225,180,.18)"></div>
+              </sc-if>
+              <sc-if value="{{ s.isStudio }}" hint-placeholder-val="{{ true }}">
+                <sc-if value="{{ bgIvoire }}" hint-placeholder-val="{{ false }}">
+                  <div style="position:absolute;inset:0;background:radial-gradient(85% 70% at 50% 38%,#FBF8F2 0%,#F1ECE1 70%,#E9E2D4 100%)"></div>
+                </sc-if>
+                <sc-if value="{{ bgLin }}" hint-placeholder-val="{{ true }}">
+                  <div style="position:absolute;inset:0;background-color:#EFE8DA;background-image:radial-gradient(70% 60% at 22% 30%,rgba(255,249,236,.55),rgba(255,249,236,0) 70%),radial-gradient(60% 50% at 85% 85%,rgba(80,60,30,.10),rgba(80,60,30,0) 70%),url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22600%22%20height%3D%22600%22%3E%3Cfilter%20id%3D%22n%22%20x%3D%220%22%20y%3D%220%22%20width%3D%22100%25%22%20height%3D%22100%25%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.012%200.016%22%20numOctaves%3D%223%22%20seed%3D%224%22%20stitchTiles%3D%22stitch%22%2F%3E%3CfeColorMatrix%20values%3D%220%200%200%200%200.36%200%200%200%200%200.29%200%200%200%200%200.19%200%200%200%200.14%200%22%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20filter%3D%22url(%23n)%22%2F%3E%3C%2Fsvg%3E'),url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22320%22%20height%3D%22320%22%3E%3Cfilter%20id%3D%22n%22%20x%3D%220%22%20y%3D%220%22%20width%3D%22100%25%22%20height%3D%22100%25%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.75%200.045%22%20numOctaves%3D%223%22%20seed%3D%227%22%20stitchTiles%3D%22stitch%22%2F%3E%3CfeColorMatrix%20values%3D%220%200%200%200%200.36%200%200%200%200%200.29%200%200%200%200%200.19%200%200%200%200.22%200%22%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20filter%3D%22url(%23n)%22%2F%3E%3C%2Fsvg%3E'),url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22320%22%20height%3D%22320%22%3E%3Cfilter%20id%3D%22n%22%20x%3D%220%22%20y%3D%220%22%20width%3D%22100%25%22%20height%3D%22100%25%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.045%200.8%22%20numOctaves%3D%223%22%20seed%3D%2211%22%20stitchTiles%3D%22stitch%22%2F%3E%3CfeColorMatrix%20values%3D%220%200%200%200%200.36%200%200%200%200%200.29%200%200%200%200%200.19%200%200%200%200.16%200%22%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20filter%3D%22url(%23n)%22%2F%3E%3C%2Fsvg%3E')"></div>
+                </sc-if>
+                <sc-if value="{{ bgVerge }}" hint-placeholder-val="{{ false }}">
+                  <div style="position:absolute;inset:0;background-color:#F2ECDF;background-image:repeating-linear-gradient(0deg,rgba(110,90,55,.06) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,transparent 0 31px,rgba(110,90,55,.07) 31px 32px)"></div>
+                </sc-if>
+                <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(255,246,228,.55) 0%,rgba(255,246,228,.12) 38%,rgba(70,50,25,0) 60%,rgba(70,50,25,.13) 100%)"></div>
+              </sc-if>
+              <sc-if value="{{ s.isCover }}" hint-placeholder-val="{{ true }}">
+                <sc-if value="{{ s.isBroche }}" hint-placeholder-val="{{ true }}">
+                  <div style="position:absolute;left:50%;top:51%;transform:translate(-50%,-50%)">
+                    <dc-import name="Livre" edition="broche" angle="tq" light="side" w="{{ s.bookW }}" hint-size="300px,420px"></dc-import>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ s.isBeau }}" hint-placeholder-val="{{ false }}">
+                  <div style="position:absolute;left:50%;top:51%;transform:translate(-50%,-50%)">
+                    <dc-import name="Livre" edition="beau" angle="tq" light="side" w="{{ s.bookW }}" hint-size="300px,420px"></dc-import>
+                  </div>
+                </sc-if>
+              </sc-if>
+              <sc-if value="{{ s.isDuo }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);display:flex;justify-content:center;align-items:flex-end;gap:2%">
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+                    <dc-import name="Livre" edition="broche" angle="{{ s.angle }}" light="side" w="{{ s.duoW }}" hint-size="200px,300px"></dc-import>
+                    <span style="font-size:14px;color:#3F3A33;font-weight:600;letter-spacing:.04em">Broché · 1,5 cm</span>
+                  </div>
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+                    <dc-import name="Livre" edition="beau" angle="{{ s.angle }}" light="side" w="{{ s.duoW }}" hint-size="200px,300px"></dc-import>
+                    <span style="font-size:14px;color:#3F3A33;font-weight:600;letter-spacing:.04em">Beau livre · 2 cm</span>
+                  </div>
+                </div>
+              </sc-if>
+              <sc-if value="{{ s.isPhoto }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute;inset:0">
+                  <image-slot id="{{ s.slot }}" src="{{ s.src }}" shape="rect" placeholder="{{ s.ph }}" style="width:100%;height:100%"></image-slot>
+                </div>
+              </sc-if>
+              <sc-if value="{{ s.isRender }}" hint-placeholder-val="{{ true }}">
+                <div style="position:absolute;inset:0;z-index:2">
+                  <image-slot id="{{ s.slot }}" overlay="" shape="rect" placeholder="{{ s.ph }}" style="width:100%;height:100%"></image-slot>
+                </div>
+              </sc-if>
+              <sc-if value="{{ s.isZoom }}" hint-placeholder-val="{{ false }}">
+                <button style="position:absolute;top:14px;right:14px;height:44px;padding:0 16px;display:flex;align-items:center;gap:8px;background:#FBF8F2;border:1px solid #1F2A38;color:#1F2A38;font-family:'Libre Franklin',sans-serif;font-weight:600;font-size:14px">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="6.5"></circle><path d="M16 16l4.5 4.5M11 8v6M8 11h6"></path></svg>Agrandir</button>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+        <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+          <button onClick="{{ prev }}" aria-label="Image précédente" style="position:absolute;left:14px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:22px;border:0;background:rgba(251,248,242,.92);color:#1D1B18;font-size:20px;cursor:pointer">‹</button>
+          <button onClick="{{ next }}" aria-label="Image suivante" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:22px;border:0;background:rgba(251,248,242,.92);color:#1D1B18;font-size:20px;cursor:pointer">›</button>
+        </sc-if>
+        <div style="position:absolute;left:14px;bottom:14px;height:30px;padding:0 12px;display:flex;align-items:center;background:rgba(29,27,24,.78);color:#F8F5EE;font-size:13px;font-variant-numeric:tabular-nums">{{ counter }}</div>
+        <sc-if value="{{ annotate }}" hint-placeholder-val="{{ false }}">
+          <span style="position:absolute;top:12px;left:12px;width:30px;height:30px;border-radius:15px;background:#C43E12;color:#FFFFFF;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 3px #FFFFFF">1</span>
+        </sc-if>
+      </div>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px">
+          <sc-for list="{{ thumbs }}" as="t" hint-placeholder-count="5">
+            <button onClick="{{ t.go }}" aria-label="{{ t.label }}" title="{{ t.label }}" style="overflow:visible;position:relative;aspect-ratio:1/1;padding:0;overflow:hidden;cursor:pointer;background:#2E261F;border:0;outline:2px solid {{ t.ring }};outline-offset:2px">
+              <sc-if value="{{ t.isRender }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute;inset:0;background-color:#EFE8DA;background-image:radial-gradient(70% 60% at 22% 30%,rgba(255,249,236,.55),rgba(255,249,236,0) 70%),radial-gradient(60% 50% at 85% 85%,rgba(80,60,30,.10),rgba(80,60,30,0) 70%),url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22600%22%20height%3D%22600%22%3E%3Cfilter%20id%3D%22n%22%20x%3D%220%22%20y%3D%220%22%20width%3D%22100%25%22%20height%3D%22100%25%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.012%200.016%22%20numOctaves%3D%223%22%20seed%3D%224%22%20stitchTiles%3D%22stitch%22%2F%3E%3CfeColorMatrix%20values%3D%220%200%200%200%200.36%200%200%200%200%200.29%200%200%200%200%200.19%200%200%200%200.14%200%22%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20filter%3D%22url(%23n)%22%2F%3E%3C%2Fsvg%3E'),url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22320%22%20height%3D%22320%22%3E%3Cfilter%20id%3D%22n%22%20x%3D%220%22%20y%3D%220%22%20width%3D%22100%25%22%20height%3D%22100%25%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.75%200.045%22%20numOctaves%3D%223%22%20seed%3D%227%22%20stitchTiles%3D%22stitch%22%2F%3E%3CfeColorMatrix%20values%3D%220%200%200%200%200.36%200%200%200%200%200.29%200%200%200%200%200.19%200%200%200%200.22%200%22%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20filter%3D%22url(%23n)%22%2F%3E%3C%2Fsvg%3E'),url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22320%22%20height%3D%22320%22%3E%3Cfilter%20id%3D%22n%22%20x%3D%220%22%20y%3D%220%22%20width%3D%22100%25%22%20height%3D%22100%25%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.045%200.8%22%20numOctaves%3D%223%22%20seed%3D%2211%22%20stitchTiles%3D%22stitch%22%2F%3E%3CfeColorMatrix%20values%3D%220%200%200%200%200.36%200%200%200%200%200.29%200%200%200%200%200.19%200%200%200%200.16%200%22%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20filter%3D%22url(%23n)%22%2F%3E%3C%2Fsvg%3E')"></div>
+                <div style="position:absolute;left:0;right:0;bottom:4px;display:flex;justify-content:center;align-items:flex-end;pointer-events:none">
+                  <dc-import name="Livre" edition="broche" angle="{{ t.angle }}" w="{{ 24 }}" hint-size="30px,40px"></dc-import>
+                  <dc-import name="Livre" edition="beau" angle="{{ t.angle }}" w="{{ 24 }}" hint-size="30px,40px"></dc-import>
+                </div>
+              </sc-if>
+              <sc-if value="{{ t.isRender }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute;inset:0;pointer-events:none">
+                  <image-slot id="{{ t.slot }}" overlay="" shape="rect" placeholder="" style="width:100%;height:100%"></image-slot>
+                </div>
+              </sc-if>
+              <sc-if value="{{ t.isPhoto }}" hint-placeholder-val="{{ true }}">
+                <div style="position:absolute;inset:0;pointer-events:none">
+                  <image-slot id="{{ t.slot }}" src="{{ t.src }}" shape="rect" placeholder="{{ t.short }}" style="width:100%;height:100%"></image-slot>
+                </div>
+              </sc-if>
+            <sc-if value="{{ t.ann }}" hint-placeholder-val="{{ false }}">
+                <span style="position:absolute;top:4px;left:4px;z-index:3;width:24px;height:24px;border-radius:12px;background:#C43E12;color:#FFFFFF;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px #FFFFFF">1</span>
+              </sc-if>
+            </button>
+          </sc-for>
+        </div>
+      </sc-if>
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;justify-content:center;gap:2px">
+          <sc-for list="{{ dots }}" as="d" hint-placeholder-count="9">
+            <button onClick="{{ d.go }}" aria-label="{{ d.label }}" style="width:28px;height:28px;padding:0;border:0;background:transparent;display:flex;align-items:center;justify-content:center">
+              <span style="width:8px;height:8px;border-radius:4px;background:{{ d.bg }};border:1px solid #4A453D"></span>
+            </button>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+
+    <div style="grid-area:b;padding:{{ sidePad }};display:flex;flex-direction:column;gap:24px">
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:0;font-size:17px;line-height:1.55;text-wrap:pretty">Les principes intemporels du vestiaire masculin, pièce par pièce, pour se composer une garde-robe sobre et juste, à l'abri des modes.</p>
+      </sc-if>
+
+      <fieldset style="border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:12px">
+        <legend style="padding:0;margin-bottom:12px;font-size:15px;font-weight:600">Choisissez votre édition</legend>
+        <div role="radiogroup" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">
+          <button role="radio" aria-checked="{{ isBroche }}" onClick="{{ pickBroche }}" style="position:relative;text-align:left;cursor:pointer;padding:16px;min-height:124px;display:flex;flex-direction:column;gap:6px;font-family:'Libre Franklin',sans-serif;color:#1D1B18;background:{{ bBg }};border:2px solid {{ bBorder }};box-shadow:{{ bShadow }}">
+            <span style="display:flex;align-items:center;gap:10px">
+              <span style="flex:none;width:20px;height:20px;border-radius:10px;box-sizing:border-box;border:{{ bRing }};background:#FFFFFF"></span>
+              <span style="font-size:17px;font-weight:700">Broché</span>
+            </span>
+            <span style="font-size:14px;line-height:1.4;color:#4A453D">Couverture souple</span>
+            <span style="margin-top:auto;font-size:17px;font-weight:700">30,00 €</span>
+            <sc-if value="{{ annotateB }}" hint-placeholder-val="{{ false }}">
+              <span style="position:absolute;top:-14px;right:-10px;width:30px;height:30px;border-radius:15px;background:#C43E12;color:#FFFFFF;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 3px #FFFFFF">2</span>
+            </sc-if>
+          </button>
+          <button role="radio" aria-checked="{{ isBeau }}" onClick="{{ pickBeau }}" style="position:relative;text-align:left;cursor:pointer;padding:16px;min-height:124px;display:flex;flex-direction:column;gap:6px;font-family:'Libre Franklin',sans-serif;color:#1D1B18;background:{{ lBg }};border:2px solid {{ lBorder }};box-shadow:{{ lShadow }}">
+            <span style="display:flex;align-items:center;gap:10px">
+              <span style="flex:none;width:20px;height:20px;border-radius:10px;box-sizing:border-box;border:{{ lRing }};background:#FFFFFF"></span>
+              <span style="font-size:17px;font-weight:700">Beau livre</span>
+            </span>
+            <span style="font-size:14px;line-height:1.4;color:#4A453D">Couverture rigide, mise en page élégante</span>
+            <span style="margin-top:auto;font-size:17px;font-weight:700">39,00 €</span>
+            <sc-if value="{{ annotateL }}" hint-placeholder-val="{{ false }}">
+              <span style="position:absolute;top:-14px;right:-10px;width:30px;height:30px;border-radius:15px;background:#C43E12;color:#FFFFFF;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 3px #FFFFFF">2</span>
+            </sc-if>
+          </button>
+        </div>
+      </fieldset>
+
+      <div style="border-top:1px solid #1D1B18">
+        <div style="display:grid;grid-template-columns:minmax(92px,1.1fr) minmax(0,1fr) minmax(0,1fr);font-size:15px">
+          <div style="padding:11px 8px 11px 0;border-bottom:1px solid #DDD5C4;color:#4A453D;font-size:13px">Comparatif</div>
+          <div style="padding:11px 8px;border-bottom:1px solid #DDD5C4;font-weight:700">Broché</div>
+          <div style="padding:11px 8px;border-bottom:1px solid #DDD5C4;font-weight:700">Beau livre</div>
+          <div style="padding:11px 8px 11px 0;border-bottom:1px solid #E4DCCB;color:#4A453D">Reliure</div>
+          <div style="padding:11px 8px;border-bottom:1px solid #E4DCCB">Souple</div>
+          <div style="padding:11px 8px;border-bottom:1px solid #E4DCCB">Rigide</div>
+          <div style="padding:11px 8px 11px 0;border-bottom:1px solid #E4DCCB;color:#4A453D">Mise en page</div>
+          <div style="padding:11px 8px;border-bottom:1px solid #E4DCCB">Classique</div>
+          <div style="padding:11px 8px;border-bottom:1px solid #E4DCCB">Élégante</div>
+          <div style="padding:11px 8px 11px 0;border-bottom:1px solid #E4DCCB;color:#4A453D">Pages</div>
+          <div style="grid-column:span 2;padding:11px 8px;border-bottom:1px solid #E4DCCB">252 pages, pour les deux</div>
+          <div style="padding:11px 8px 11px 0;border-bottom:1px solid #E4DCCB;color:#4A453D">Illustrations</div>
+          <div style="grid-column:span 2;padding:11px 8px;border-bottom:1px solid #E4DCCB">En couleur, pour les deux</div>
+          <div style="padding:11px 8px 11px 0;border-bottom:1px solid #DDD5C4;color:#4A453D">Prix</div>
+          <div style="padding:11px 8px;border-bottom:1px solid #DDD5C4">30,00 €</div>
+          <div style="padding:11px 8px;border-bottom:1px solid #DDD5C4">39,00 €</div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="position:relative;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;line-height:1">{{ price }}</span>
+          <span style="font-size:14px;color:#4A453D">TTC · édition {{ editionLower }}</span>
+          <sc-if value="{{ annotate }}" hint-placeholder-val="{{ false }}">
+            <span style="width:30px;height:30px;border-radius:15px;background:#C43E12;color:#FFFFFF;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;align-self:center">3</span>
+          </sc-if>
+        </div>
+        <div style="display:flex;gap:12px">
+          <div style="flex:none;display:flex;align-items:center;border:1px solid #8C836F;height:56px">
+            <button onClick="{{ dec }}" aria-label="Diminuer la quantité" style="width:44px;height:54px;border:0;background:transparent;font-size:20px;color:#1D1B18;cursor:pointer">−</button>
+            <span aria-label="Quantité" style="width:28px;text-align:center;font-size:17px;font-weight:600">{{ qty }}</span>
+            <button onClick="{{ inc }}" aria-label="Augmenter la quantité" style="width:44px;height:54px;border:0;background:transparent;font-size:20px;color:#1D1B18;cursor:pointer">+</button>
+          </div>
+          <button onClick="{{ addToCart }}" style="flex:1;height:56px;background:#1F2A38;color:#FFFFFF;border:0;font-family:'Libre Franklin',sans-serif;font-size:17px;font-weight:600;letter-spacing:.02em;cursor:pointer" style-hover="background:#2C3B4F">Ajouter au panier</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:15px">
+          <span style="width:9px;height:9px;border-radius:5px;background:#2F6B3A"></span>
+          <span><strong style="color:#245530">En stock</strong>, expédié sous 48 h depuis la Bretagne</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;font-size:14px;color:#3F3A33;padding:12px 0;border-top:1px solid #DDD5C4;border-bottom:1px solid #DDD5C4">
+          <span style="display:flex;align-items:center;gap:6px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="10" width="14" height="10"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg>Paiement sécurisé</span>
+          <span aria-hidden="true" style="color:#9C917C">·</span>
+          <span style="display:flex;align-items:center;gap:6px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="7" width="18" height="13"></rect><path d="M3 11h18"></path></svg>Port fixe 5 €</span>
+          <span aria-hidden="true" style="color:#9C917C">·</span>
+          <span style="display:flex;align-items:center;gap:6px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4h4"></path></svg>Satisfait ou remboursé</span>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start">
+          <svg style="flex:none;margin-top:2px" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7A5418" stroke-width="1.5"><rect x="3.5" y="9" width="17" height="11.5"></rect><path d="M2.5 9h19M12 9v11.5"></path><path d="M12 9c-1.5-3-5-4-5-1.5S12 9 12 9zM12 9c1.5-3 5-4 5-1.5S12 9 12 9z"></path></svg>
+          <p style="margin:0;font-size:15px;line-height:1.55"><strong>Pour offrir.</strong> Une idée cadeau pour un anniversaire ou une réussite professionnelle, livrable directement au destinataire.</p>
+        </div>
+      </div>
+
+      <div style="background:#F1ECE1;border:1px solid #DDD5C4;padding:18px 20px">
+        <div style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#7A5418;font-weight:600;margin-bottom:12px">Caractéristiques</div>
+        <dl style="margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 20px;font-size:15px">
+          <div><dt style="color:#4A453D;font-size:13px">Pages</dt><dd style="margin:2px 0 0;font-weight:600">252</dd></div>
+          <div><dt style="color:#4A453D;font-size:13px">Format</dt><dd style="margin:2px 0 0;font-weight:600">15,6 × 23,4 cm</dd></div>
+          <div style="position:relative"><dt style="color:#4A453D;font-size:13px">Reliure</dt><dd style="margin:2px 0 0;font-weight:600;display:flex;align-items:center;gap:8px">{{ reliure }}<sc-if value="{{ annotate }}" hint-placeholder-val="{{ false }}"><span style="width:26px;height:26px;border-radius:13px;background:#C43E12;color:#FFFFFF;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center">4</span></sc-if></dd></div>
+          <div><dt style="color:#4A453D;font-size:13px">Illustrations</dt><dd style="margin:2px 0 0;font-weight:600">En couleur</dd></div>
+        </dl>
+      </div>
+    </div>
+  </main>
+
+  <sc-if value="{{ full }}" hint-placeholder-val="{{ false }}">
+    <dc-import name="SuiteFiche" device="{{ device }}" hint-size="100%,3000px"></dc-import>
+  </sc-if>
+
+  <sc-if value="{{ showSticky }}" hint-placeholder-val="{{ false }}">
+    <sc-if value="{{ stickyStatic }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;align-items:center;gap:10px;padding:14px 16px 10px;background:#E4DFD5;border-top:2px dashed #C43E12;font-size:13px;font-weight:600;color:#9A2F0C">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v14M6 12l6 6 6-6"></path></svg>
+        Barre fixée en bas d'écran pendant le défilement
+      </div>
+    </sc-if>
+    <div style="position:{{ stickyPos }};bottom:0;z-index:5;background:#FBF8F2;border-top:1px solid #C9BDA3;box-shadow:0 -6px 16px rgba(30,20,10,.08);padding:12px 16px 20px">
+      <button onClick="{{ addToCart }}" style="position:relative;width:100%;height:54px;background:#1F2A38;color:#FFFFFF;border:0;font-family:'Libre Franklin',sans-serif;font-size:16px;font-weight:600">
+        {{ stickyLabel }}
+        <sc-if value="{{ annotate }}" hint-placeholder-val="{{ false }}">
+          <span style="position:absolute;top:-14px;left:-6px;width:30px;height:30px;border-radius:15px;background:#C43E12;color:#FFFFFF;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 3px #FFFFFF">5</span>
+        </sc-if>
+      </button>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1100},&quot;device&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;desktop&quot;,&quot;mobile&quot;],&quot;default&quot;:&quot;desktop&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;edition&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;broche&quot;,&quot;beau&quot;],&quot;default&quot;:&quot;broche&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;annotate&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;full&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;added&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;sticky&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { edition: this.props.edition === 'beau' ? 'beau' : 'broche', slide: 0, qty: 1, added: !!this.props.added };
+  trackRef = React.createRef();
+  componentDidMount() {
+    const el = this.trackRef.current;
+    if (!el || !window.ResizeObserver) return;
+    this.snap = () => { const t = this.trackRef.current; if (t) { t.style.scrollBehavior = 'auto'; t.scrollLeft = this.state.slide * t.clientWidth; t.style.scrollBehavior = ''; } };
+    this.ro = new ResizeObserver(() => { const w = el.clientWidth; this.lockUntil = Date.now() + 600; this.snap(); if (w && Math.abs(w - (this.state.trackW || 0)) > 2) this.setState({ trackW: w }, this.snap); });
+    this.lockUntil = Date.now() + 1500;
+    [0, 300, 1000].forEach(d => setTimeout(() => this.snap && this.snap(), d));
+    this.ro.observe(el);
+  }
+  componentWillUnmount() { this.ro && this.ro.disconnect(); }
+  componentDidUpdate(prev) {
+    if (prev.edition !== this.props.edition) { this.setState({ edition: this.props.edition === 'beau' ? 'beau' : 'broche' }); this.goTo(0); }
+    if (prev.added !== this.props.added) this.setState({ added: !!this.props.added });
+  }
+  goTo(i) {
+    const el = this.trackRef.current;
+    const n = this.nSlides || 5, idx = (i + n) % n;
+    this.lockUntil = 0;
+    if (el) el.scrollTo({ left: idx * el.clientWidth, behavior: 'smooth' });
+    this.setState({ slide: idx });
+  }
+  renderVals() {
+    const m = this.props.device === 'mobile';
+    const beau = this.state.edition === 'beau';
+    const ann = !!this.props.annotate;
+    const tw = this.state.trackW || (m ? 390 : 597);
+    const bookW = Math.round(tw * 0.52);
+    const fond = this.props.fond || 'lin';
+    const sc = { isRender: false, isStudio: false, isScene: false, isCover: false, isDuo: false, isPhoto: false, isZoom: false, isBroche: !beau, isBeau: beau, bookW, duoW: Math.round(tw * 0.27) };
+    const slides = [
+      { ...sc, isStudio: true, isCover: true, isRender: true, slot: beau ? 'g-principale-beau' : 'g-principale-broche', ph: 'Déposer une photo pour remplacer toute l\u2019image', label: 'Couverture de l\u2019édition choisie' },
+      { ...sc, isPhoto: true, slot: 'g2-deux-editions', src: './assets/galerie-2-deux-editions.jpg', ph: 'Les deux éditions côte à côte', label: 'Les deux éditions côte à côte' },
+      { ...sc, isPhoto: true, slot: beau ? 'g3-en-main-beau' : 'g3-en-main', src: beau ? './assets/galerie-3-en-main-beau-livre.jpg' : './assets/galerie-3-en-main.jpg', ph: 'Le livre en main', label: 'En main' },
+      { ...sc, isPhoto: true, slot: 'g4-lecture', src: './assets/galerie-4-lecture.jpg', ph: 'En lecture', label: 'En lecture' },
+      { ...sc, isPhoto: true, isZoom: true, slot: 'g5-extrait', src: './assets/galerie-5-extrait-chapitre-7.jpg', ph: 'Extrait · chapitre 7', label: 'Extrait · chapitre 7' }
+    ];
+    this.nSlides = slides.length;
+    const cur = this.state.slide;
+    const thumbs = slides.map((s, k) => ({
+      go: () => this.goTo(k), label: s.label, ring: cur === k ? '#1F2A38' : 'transparent',
+      isRender: !!s.isRender, isPhoto: s.isPhoto, angle: 'face', slot: s.slot, src: s.src, short: s.label, ann: ann && (k === 0 || k === 2)
+    }));
+    const price = beau ? '39,00 €' : '30,00 €';
+    const edLabel = beau ? 'Beau livre' : 'Broché';
+    const on = { bg: '#FFFDF8', border: '#1F2A38', shadow: '0 6px 18px -10px rgba(31,42,56,.55)', ring: '6px solid #1F2A38' };
+    const off = { bg: 'transparent', border: '#BDB29C', shadow: 'none', ring: '1.5px solid #6B655A' };
+    const B = beau ? off : on, L = beau ? on : off;
+    const sticky = m && this.props.sticky !== false;
+    return {
+      bgLin: fond === 'lin', bgVerge: fond === 'verge', bgIvoire: fond === 'ivoire',
+      device: m ? 'mobile' : 'desktop', isMobile: m, isDesktop: !m, annotate: ann,
+      annotateB: ann && !beau, annotateL: ann && beau,
+      full: !!this.props.full, showSticky: sticky,
+      stickyStatic: this.props.stickyMode !== 'fixed',
+      stickyPos: this.props.stickyMode === 'fixed' ? 'sticky' : 'relative',
+      count: this.state.added ? this.state.qty : 0,
+      bannerDesktop: this.state.added && !m, bannerMobile: this.state.added && m,
+      closeBanner: () => this.setState({ added: false }),
+      gridPad: m ? '16px 0 40px' : '28px 40px 80px',
+      gridCols: m ? 'minmax(0,1fr)' : 'minmax(0,1.18fr) minmax(0,1fr)',
+      gridAreas: m ? '"h" "g" "b"' : '"g h" "g b"',
+      rowGap: m ? 20 : 28, sidePad: m ? '0 20px' : '0',
+      galleryPos: m ? 'relative' : 'sticky',
+      h1: m ? 34 : 48,
+      trackRef: this.trackRef,
+      onScroll: e => { if (Date.now() < (this.lockUntil || 0)) { this.snap && this.snap(); return; } const el = e.currentTarget; const i = Math.round(el.scrollLeft / el.clientWidth); if (i !== this.state.slide) this.setState({ slide: i }); },
+      prev: () => this.goTo(cur - 1), next: () => this.goTo(cur + 1),
+      counter: `${cur + 1} / ${slides.length}`,
+      slides, thumbs,
+      dots: slides.map((s, k) => ({ go: () => this.goTo(k), label: s.label, bg: cur === k ? '#1D1B18' : 'transparent' })),
+      isBroche: !beau, isBeau: beau,
+      pickBroche: () => { this.setState({ edition: 'broche' }); this.goTo(0); },
+      pickBeau: () => { this.setState({ edition: 'beau' }); this.goTo(0); },
+      bBg: B.bg, bBorder: B.border, bShadow: B.shadow, bRing: B.ring,
+      lBg: L.bg, lBorder: L.border, lShadow: L.shadow, lRing: L.ring,
+      price, editionLower: beau ? 'beau livre' : 'brochée',
+      reliure: beau ? 'Rigide' : 'Souple',
+      qty: this.state.qty,
+      dec: () => this.setState(s => ({ qty: Math.max(1, s.qty - 1) })),
+      inc: () => this.setState(s => ({ qty: s.qty + 1 })),
+      addToCart: () => this.setState({ added: true }),
+      stickyLabel: `${edLabel} · ${price} — Ajouter au panier`
+    };
+  }
+}
+</script>
+</body>
+</html>

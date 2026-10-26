@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="./image-slot.js"></script></helmet>
+<sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+  <header style="background:#FBF8F2;border-bottom:1px solid #DDD5C4;font-family:'Libre Franklin',sans-serif">
+    <div style="max-width:1240px;margin:0 auto;padding:0 40px;height:92px;display:flex;align-items:center;justify-content:space-between;gap:32px">
+      <a href="#" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:#1D1B18">
+        <image-slot id="logo-hh" shape="circle" placeholder="Logo" style="width:56px;height:56px"></image-slot>
+        <span style="display:flex;flex-direction:column;line-height:1">
+          <span style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#4A453D">Les Éditions</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;margin-top:4px;white-space:nowrap">L'Honnête Homme</span>
+        </span>
+      </a>
+      <nav style="display:flex;align-items:center;gap:6px;font-size:15px">
+        <a href="#" style="padding:12px 14px;color:#1D1B18;text-decoration:none;white-space:nowrap">Accueil</a>
+        <a href="#" style="padding:12px 14px;color:#1D1B18;text-decoration:none;white-space:nowrap;border-bottom:2px solid #9A6B1F">Nos livres</a>
+        <a href="#" style="padding:12px 14px;color:#1D1B18;text-decoration:none">Blog</a>
+        <a href="#" style="padding:12px 14px;color:#1D1B18;text-decoration:none">Contact</a>
+        <span style="width:1px;height:24px;background:#DDD5C4;margin:0 10px"></span>
+        <button aria-label="Rechercher" style="width:44px;height:44px;border:0;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#1D1B18">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="6.5"></circle><path d="M16 16l4.5 4.5"></path></svg>
+        </button>
+        <a href="#" style="display:flex;align-items:center;gap:9px;height:44px;padding:0 16px;border-radius:2px;text-decoration:none;color:#1D1B18;background:{{ cartBg }};border:1px solid {{ cartBorder }}">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1.2 12H6.2z"></path><path d="M9 10V6.5a3 3 0 0 1 6 0V10"></path></svg>
+          <span style="font-weight:600;white-space:nowrap">{{ cartLabel }}</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+</sc-if>
+<sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+  <header style="background:#FBF8F2;border-bottom:1px solid #DDD5C4;font-family:'Libre Franklin',sans-serif;height:64px;padding:0 6px;display:grid;grid-template-columns:52px 1fr 52px;align-items:center">
+    <button aria-label="Menu" style="width:48px;height:48px;border:0;background:transparent;display:flex;align-items:center;justify-content:center;color:#1D1B18">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+    </button>
+    <a href="#" style="display:flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;color:#1D1B18">
+      <image-slot id="logo-hh" shape="circle" placeholder="Logo" style="width:36px;height:36px"></image-slot>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600">L'Honnête Homme</span>
+    </a>
+    <a href="#" aria-label="{{ cartLabel }}" style="position:relative;width:48px;height:48px;display:flex;align-items:center;justify-content:center;color:#1D1B18">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1.2 12H6.2z"></path><path d="M9 10V6.5a3 3 0 0 1 6 0V10"></path></svg>
+      <span style="position:absolute;top:5px;right:3px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:{{ badgeBg }};color:#FFFFFF;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;box-sizing:border-box">{{ count }}</span>
+    </a>
+  </header>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:100},&quot;device&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;desktop&quot;,&quot;mobile&quot;],&quot;default&quot;:&quot;desktop&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;count&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:0,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const count = Number(this.props.count) || 0;
+    const mobile = this.props.device === 'mobile';
+    return {
+      isMobile: mobile, isDesktop: !mobile, count,
+      cartLabel: `Panier (${count})`,
+      cartBg: count ? '#F1EADB' : 'transparent',
+      cartBorder: count ? '#9A6B1F' : '#CFC6B3',
+      badgeBg: count ? '#8A5A14' : '#4A453D'
+    };
+  }
+}
+</script>
+</body>
+</html>
