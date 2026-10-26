@@ -22,8 +22,15 @@
         <p style="margin:0;font-size:17px;line-height:1.65;text-wrap:pretty">Un pardessus pour l'hiver : quelle coupe, quelle étoffe, quels détails feront la différence ?</p>
         <p style="margin:0;font-size:17px;line-height:1.65;text-wrap:pretty">Et puis ces détails auxquels on prête parfois trop peu d'attention : la longueur d'une manche, l'accord d'une cravate, la qualité d'une retouche ou le soin apporté à une paire de souliers.</p>
       </div>
-      <div style="display:flex;flex-direction:column;gap:14px">
-        <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#7A5418;border-bottom:1px solid #C9BDA3;padding-bottom:10px">II. Ce que contient le livre</h3>
+      <div style="display:flex;flex-direction:column">
+        <h3 style="margin:0">
+          <button onClick="{{ toggleContent }}" aria-expanded="{{ contentOpen }}" style="width:100%;min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 24px;background:#FBF8F2;border:1px solid #1F2A38;color:#1D1B18;font-family:'Libre Franklin',sans-serif;font-size:16px;font-weight:600;cursor:pointer;text-align:left">
+            <span>II. Ce que contient le livre</span>
+            <span style="font-size:22px;font-weight:400;line-height:1">{{ contentSign }}</span>
+          </button>
+        </h3>
+        <sc-if value="{{ contentOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#FBF8F2;border:1px solid #1F2A38;border-top:0;padding:20px 24px 24px;display:flex;flex-direction:column;gap:14px">
         <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;font-size:17px;line-height:1.5">
           <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>Les fondements du style classique</strong> : son histoire, ses codes et ses grandes traditions.</span></li>
           <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>Les pièces du vestiaire masculin</strong> : costume, gilet, chemise, cravate, veste sport, pardessus et tenues de cérémonie.</span></li>
@@ -34,6 +41,8 @@
         </ul>
         <p style="margin:4px 0 0;font-size:15px;line-height:1.5;color:#4A453D">252 pages, 20 chapitres, accompagnés d'illustrations et de schémas en couleur.</p>
         <blockquote style="margin:8px 0 0;padding:4px 0 4px 18px;border-left:2px solid #9A6B1F;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:21px;line-height:1.4;color:#4A453D">[citation à choisir dans le livre]</blockquote>
+        </div>
+        </sc-if>
       </div>
       <div style="display:flex;flex-direction:column;gap:14px">
         <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#7A5418;border-bottom:1px solid #C9BDA3;padding-bottom:10px">III. À qui s'adresse ce livre ?</h3>
@@ -46,13 +55,11 @@
     <div style="max-width:1240px;margin:0 auto;padding:{{ secPad }}">
       <div style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#7A5418;font-weight:600">Sommaire</div>
       <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:{{ h2 }}px;line-height:1.1;margin:12px 0 0">Quatre parties, vingt chapitres, six annexes</h2>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:#C9BDA3;border:1px solid #C9BDA3;margin-top:{{ blockTop }}px">
+      <div style="border-top:1px solid #1D1B18;margin-top:{{ blockTop }}px">
         <sc-for list="{{ parts }}" as="p" hint-placeholder-count="4">
-          <div style="background:#FBF8F2;padding:24px;display:flex;flex-direction:column;gap:8px">
-            <div style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#7A5418;font-weight:600">{{ p.label }}</div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;line-height:1.15">{{ p.title }}</div>
-            <div style="font-size:15px;color:#4A453D;line-height:1.5">{{ p.summary }}</div>
-            <div style="font-size:14px;color:#4A453D;margin-top:auto;padding-top:8px">{{ p.range }}</div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:2px 24px;padding:12px 0;border-bottom:1px solid #C9BDA3">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:600;line-height:1.2">{{ p.title }}</span>
+            <span style="font-size:14px;color:#4A453D;white-space:nowrap"><span style="color:#7A5418;font-weight:600">{{ p.label }}</span> · {{ p.range }}</span>
           </div>
         </sc-for>
       </div>
@@ -194,7 +201,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;device&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;desktop&quot;,&quot;mobile&quot;],&quot;default&quot;:&quot;desktop&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
 class Component extends DCLogic {
-  state = { tocOpen: false };
+  state = { tocOpen: false, contentOpen: false };
   renderVals() {
     const m = this.props.device === 'mobile';
     const ch = (n, t, p) => ({ n, t, p });
@@ -215,11 +222,14 @@ class Component extends DCLogic {
       colGap: m ? 32 : 48, blockTop: m ? 28 : 44,
       specCols: m ? 'minmax(96px,1fr) minmax(0,1fr) minmax(0,1fr)' : '1.2fr 1fr 1fr',
       parts: [
-        { label: 'Première partie', title: 'Les fondements du style classique', summary: 'Définition, catégories, le complet de ville et les autres costumes.', range: 'Chapitres 1 à 4' },
-        { label: 'Deuxième partie', title: 'Choix et entretien des tenues', summary: 'Le costume, le gilet, la qualité, l\u2019entretien, la chemise, la cravate.', range: 'Chapitres 5 à 11' },
-        { label: 'Troisième partie', title: 'Accessoires et pièces complémentaires', summary: 'Accessoires, hauts de corps, veste sport, pantalons, chaussettes.', range: 'Chapitres 12 à 16' },
-        { label: 'Quatrième partie', title: 'Élégance et occasions spéciales', summary: 'Chaussures et cirage, pardessus, imperméables, tenues mondaines.', range: 'Chapitres 17 à 20' }
+        { label: 'Partie 1', title: 'Les fondements du style classique', range: 'Chapitres 1 à 4' },
+        { label: 'Partie 2', title: 'Choix et entretien des tenues', range: 'Chapitres 5 à 11' },
+        { label: 'Partie 3', title: 'Accessoires et pièces complémentaires', range: 'Chapitres 12 à 16' },
+        { label: 'Partie 4', title: 'Élégance et occasions spéciales', range: 'Chapitres 17 à 20' }
       ],
+      contentOpen: this.state.contentOpen,
+      contentSign: this.state.contentOpen ? '−' : '+',
+      toggleContent: () => this.setState(s => ({ contentOpen: !s.contentOpen })),
       tocOpen: open, tocParts: toc,
       tocLabel: open ? 'Masquer le sommaire complet' : 'Voir le sommaire complet · 20 chapitres et annexes',
       tocSign: open ? '−' : '+',
