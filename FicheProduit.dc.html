@@ -56,7 +56,7 @@
 
     <div style="grid-area:g;align-self:start;position:{{ galleryPos }};top:24px;display:flex;flex-direction:column;gap:12px">
       <div style="position:relative">
-        <div ref="{{ trackRef }}" onScroll="{{ onScroll }}" style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;aspect-ratio:1/1;background:#F1ECE1">
+        <div ref="{{ trackRef }}" onScroll="{{ onScroll }}" style="display:flex;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y;scrollbar-width:none;aspect-ratio:1/1;background:#F1ECE1">
           <sc-for list="{{ slides }}" as="s" hint-placeholder-count="1">
             <div style="flex:0 0 100%;scroll-snap-align:start;position:relative;overflow:hidden">
               <sc-if value="{{ s.isScene }}" hint-placeholder-val="{{ true }}">
