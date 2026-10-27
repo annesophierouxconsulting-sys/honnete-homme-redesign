@@ -255,19 +255,27 @@
       </div>
     </sc-if>
     <div style="position:{{ stickyPos }};bottom:0;z-index:5;background:#FBF8F2;border-top:1px solid #C9BDA3;box-shadow:0 -6px 16px rgba(30,20,10,.08);padding:12px 16px 20px">
+      <sc-if value="{{ stickyAdded }}" hint-placeholder-val="{{ false }}">
+      <div role="status" aria-live="polite" style="display:flex;align-items:center;gap:12px;height:54px">
+        <button onClick="{{ stickyBack }}" aria-label="Ajouté au panier. Revenir au bouton Ajouter au panier" style="flex:1;min-width:0;height:54px;display:flex;align-items:center;gap:8px;padding:0 4px;background:none;border:0;color:#1F2A38;font-family:'Libre Franklin',sans-serif;font-size:16px;font-weight:700;cursor:pointer;text-align:left"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1F2A38" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Ajouté</button>
+        <a href="#" style="flex:none;height:54px;padding:0 20px;display:flex;align-items:center;background:#1F2A38;color:#FFFFFF;font-weight:600;font-size:16px;text-decoration:none;white-space:nowrap">{{ cartLabel }}</a>
+      </div>
+      </sc-if>
+      <sc-if value="{{ stickyIdle }}" hint-placeholder-val="{{ true }}">
       <button onClick="{{ addToCart }}" style="position:relative;width:100%;height:54px;background:#1F2A38;color:#FFFFFF;border:0;font-family:'Libre Franklin',sans-serif;font-size:16px;font-weight:600">
         {{ stickyLabel }}
         <sc-if value="{{ annotate }}" hint-placeholder-val="{{ false }}">
           <span style="position:absolute;top:-14px;left:-6px;width:30px;height:30px;border-radius:15px;background:#C43E12;color:#FFFFFF;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 3px #FFFFFF">5</span>
         </sc-if>
       </button>
+      </sc-if>
     </div>
   </sc-if>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:1100},&quot;device&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;desktop&quot;,&quot;mobile&quot;],&quot;default&quot;:&quot;desktop&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;edition&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;broche&quot;,&quot;beau&quot;],&quot;default&quot;:&quot;broche&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;annotate&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;full&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;added&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;sticky&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
 class Component extends DCLogic {
-  state = { edition: this.props.edition === 'beau' ? 'beau' : 'broche', slide: 0, qty: 1, added: !!this.props.added };
+  state = { edition: this.props.edition === 'beau' ? 'beau' : 'broche', slide: 0, qty: 1, added: !!this.props.added, cart: this.props.added ? 1 : 0, stickyAdded: false };
   trackRef = React.createRef();
   componentDidMount() {
     const el = this.trackRef.current;
@@ -278,7 +286,7 @@ class Component extends DCLogic {
     [0, 300, 1000].forEach(d => setTimeout(() => this.snap && this.snap(), d));
     this.ro.observe(el);
   }
-  componentWillUnmount() { this.ro && this.ro.disconnect(); }
+  componentWillUnmount() { this.ro && this.ro.disconnect(); clearTimeout(this.stickyTimer); }
   componentDidUpdate(prev) {
     if (prev.edition !== this.props.edition) { this.setState({ edition: this.props.edition === 'beau' ? 'beau' : 'broche' }); this.goTo(0); }
     if (prev.added !== this.props.added) this.setState({ added: !!this.props.added });
@@ -324,7 +332,10 @@ class Component extends DCLogic {
       full: !!this.props.full, showSticky: sticky,
       stickyStatic: this.props.stickyMode !== 'fixed',
       stickyPos: this.props.stickyMode === 'fixed' ? 'sticky' : 'relative',
-      count: this.state.added ? this.state.qty : 0,
+      count: m ? this.state.cart : (this.state.added ? this.state.qty : 0),
+      stickyAdded: this.state.stickyAdded, stickyIdle: !this.state.stickyAdded,
+      cartLabel: `Voir le panier (${this.state.cart})`,
+      stickyBack: () => { clearTimeout(this.stickyTimer); this.setState({ stickyAdded: false }); },
       bannerDesktop: this.state.added && !m, bannerMobile: this.state.added && m,
       closeBanner: () => this.setState({ added: false }),
       gridPad: m ? '16px 0 40px' : '28px 40px 80px',
@@ -349,7 +360,11 @@ class Component extends DCLogic {
       qty: this.state.qty,
       dec: () => this.setState(s => ({ qty: Math.max(1, s.qty - 1) })),
       inc: () => this.setState(s => ({ qty: s.qty + 1 })),
-      addToCart: () => this.setState({ added: true }),
+      addToCart: () => {
+        clearTimeout(this.stickyTimer);
+        this.setState(s => ({ added: true, cart: s.cart + s.qty, stickyAdded: m }));
+        if (m) this.stickyTimer = setTimeout(() => this.setState({ stickyAdded: false }), 4000);
+      },
       stickyLabel: `${edLabel} · ${price} — Ajouter au panier`
     };
   }
