@@ -12,41 +12,48 @@
 
   <section style="max-width:1240px;margin:0 auto;padding:{{ secPad }};border-top:1px solid #DDD5C4">
     <div style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#7A5418;font-weight:600">Présentation</div>
-    <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:{{ h2 }}px;line-height:1.1;margin:12px 0 0;max-width:760px;text-wrap:balance">L'élégance s'apprend, le style se cultive</h2>
-    <p style="margin:18px 0 0;max-width:760px;font-size:19px;line-height:1.6;text-wrap:pretty">Reconnaître un beau vêtement, apprécier une coupe, maîtriser les accords et les usages : le style classique repose sur des savoirs qui se transmettent.</p>
-    <p style="margin:12px 0 0;max-width:760px;font-size:19px;line-height:1.6;text-wrap:pretty">Ce guide vous donne les clés pour affiner votre goût, faire des choix éclairés et développer votre propre élégance, avec l'assurance de celui qui sait ce qu'il porte et pourquoi.</p>
+    <div style="display:grid;grid-template-columns:{{ introCols }};gap:{{ blockTop }}px;margin-top:12px;align-items:start">
+      <div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:{{ h2 }}px;line-height:1.1;margin:0;max-width:760px;text-wrap:balance">L’élégance s’apprend, le style se cultive</h2>
+        <p style="margin:18px 0 0;max-width:760px;font-size:19px;line-height:1.6;text-wrap:pretty">Reconnaître un beau vêtement, apprécier une coupe, maîtriser les accords et les usages : le style classique repose sur des savoirs qui se transmettent.</p>
+        <p style="margin:12px 0 0;max-width:760px;font-size:19px;line-height:1.6;text-wrap:pretty">Ce guide vous donne les clés pour affiner votre goût, faire des choix éclairés et développer votre propre élégance, avec l’assurance de celui qui sait ce qu’il porte et pourquoi.</p>
+      </div>
+      <figure style="margin:0;padding:2px 0 2px 20px;border-left:3px solid #7A5418">
+        <blockquote style="margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:{{ quote }}px;line-height:1.3;color:#1D1B18;text-wrap:balance">[Citation à sélectionner dans le livre]</blockquote>
+        <figcaption style="margin-top:10px;font-size:13px;line-height:1.4;color:#6B655A">Citation du livre, à choisir avec la maison</figcaption>
+      </figure>
+    </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:{{ colGap }}px;margin-top:{{ blockTop }}px;align-items:start">
       <div style="display:flex;flex-direction:column;gap:14px">
         <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#7A5418;border-bottom:1px solid #C9BDA3;padding-bottom:10px">I. Ce que contient le guide</h3>
         <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;font-size:17px;line-height:1.5">
-          <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>Les fondements du style classique</strong> : histoire, codes et traditions.</span></li>
-          <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>Les essentiels du vestiaire masculin</strong> : costumes, chemises, gilets, cravates, vestes, pardessus et tenues de cérémonie.</span></li>
-          <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>Les critères d'une belle confection</strong> : étoffes, entoilage, coupes et finitions.</span></li>
+          <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>Les fondements du style classique</strong> : histoire, codes et traditions.</span></li>
+          <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>Les essentiels du vestiaire masculin</strong> : costumes, chemises, gilets, cravates, vestes, pardessus et tenues de cérémonie.</span></li>
+          <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>Les critères d’une belle confection</strong> : étoffes, entoilage, coupes et finitions.</span></li>
           <sc-if value="{{ contentOpen }}" hint-placeholder-val="{{ false }}">
-          <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>L'art des accords</strong> : associer les vêtements, les couleurs et les accessoires.</span></li>
-          <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>L'entretien du vestiaire</strong> : préserver ses vêtements et prendre soin de ses souliers.</span></li>
+          <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>L’art des accords</strong> : associer les vêtements, les couleurs et les accessoires.</span></li>
+          <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>L’entretien du vestiaire</strong> : préserver ses vêtements et prendre soin de ses souliers.</span></li>
           <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>Six annexes</strong>, dont un guide pour les budgets limités, une découverte de Savile Row et un annuaire des meilleures marques.</span></li>
           </sc-if>
         </ul>
         <button onClick="{{ toggleContent }}" aria-expanded="{{ contentOpen }}" style="align-self:flex-start;min-height:44px;display:flex;align-items:center;gap:8px;padding:0;background:none;border:0;color:#1D1B18;font-family:'Libre Franklin',sans-serif;font-size:16px;font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:4px">{{ contentLabel }}</button>
-        <p style="margin:0;font-size:15px;line-height:1.5;color:#4A453D">252 pages, 20 chapitres, accompagnés d'illustrations et de schémas en couleur.</p>
+        <p style="margin:0;font-size:15px;line-height:1.5;color:#4A453D">252 pages, 20 chapitres, accompagnés d’illustrations et de schémas en couleur.</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:14px">
-        <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#7A5418;border-bottom:1px solid #C9BDA3;padding-bottom:10px">II. Ce que vous saurez faire après cette lecture</h3>
+        <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#7A5418;border-bottom:1px solid #C9BDA3;padding-bottom:10px">II. Ce que vous saurez faire</h3>
         <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;font-size:17px;line-height:1.5">
-          <li style="display:flex;gap:12px"><span aria-hidden="true" style="flex:none;width:20px;height:20px;margin-top:3px;border-radius:10px;background:#7A5418;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span><span><strong>Acheter en connaissance de cause</strong> : reconnaître une confection de qualité, comprendre ce qui justifie son prix et éviter les mauvais investissements.</span></li>
-          <li style="display:flex;gap:12px"><span aria-hidden="true" style="flex:none;width:20px;height:20px;margin-top:3px;border-radius:10px;background:#7A5418;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span><span><strong>Être à l'aise en toute circonstance</strong> : maîtriser les codes vestimentaires pour s'habiller avec justesse, sans en faire trop ni se sentir déplacé.</span></li>
-          <li style="display:flex;gap:12px"><span aria-hidden="true" style="flex:none;width:20px;height:20px;margin-top:3px;border-radius:10px;background:#7A5418;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span><span><strong>Construire un vestiaire qui vous ressemble</strong> : privilégier les bonnes pièces, faire des choix durables et affirmer votre style sans multiplier les achats.</span></li>
-          <li style="display:flex;gap:12px"><span aria-hidden="true" style="flex:none;width:20px;height:20px;margin-top:3px;border-radius:10px;background:#7A5418;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span><span><strong>Cultiver le sens du détail</strong> : maîtriser les accords, les retouches et l'entretien pour composer des tenues élégantes avec naturel.</span></li>
+          <li style="display:flex;gap:12px"><span aria-hidden="true" style="flex:none;width:20px;height:20px;margin-top:3px;border-radius:10px;background:#7A5418;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span><span style="display:flex;flex-direction:column;gap:2px"><strong>Acheter en connaissance de cause</strong><span>Reconnaître une confection de qualité et son juste prix.</span></span></li>
+          <li style="display:flex;gap:12px"><span aria-hidden="true" style="flex:none;width:20px;height:20px;margin-top:3px;border-radius:10px;background:#7A5418;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span><span style="display:flex;flex-direction:column;gap:2px"><strong>Être à l’aise en toute circonstance</strong><span>S’habiller avec justesse, sans en faire trop.</span></span></li>
+          <li style="display:flex;gap:12px"><span aria-hidden="true" style="flex:none;width:20px;height:20px;margin-top:3px;border-radius:10px;background:#7A5418;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span><span style="display:flex;flex-direction:column;gap:2px"><strong>Construire un vestiaire qui vous ressemble</strong><span>Privilégier les bonnes pièces, faire des choix durables et affirmer votre style sans multiplier les achats.</span></span></li>
+          <li style="display:flex;gap:12px"><span aria-hidden="true" style="flex:none;width:20px;height:20px;margin-top:3px;border-radius:10px;background:#7A5418;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span><span style="display:flex;flex-direction:column;gap:2px"><strong>Cultiver le sens du détail</strong><span>Accords, retouches et entretien maîtrisés.</span></span></li>
         </ul>
-        <blockquote style="margin:8px 0 0;padding:4px 0 4px 18px;border-left:2px solid #9A6B1F;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:21px;line-height:1.4;color:#4A453D">[Citation à sélectionner dans le livre]</blockquote>
       </div>
       <div style="display:flex;flex-direction:column;gap:14px">
-        <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#7A5418;border-bottom:1px solid #C9BDA3;padding-bottom:10px">III. À qui s'adresse ce livre ?</h3>
+        <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#7A5418;border-bottom:1px solid #C9BDA3;padding-bottom:10px">III. À qui s’adresse ce livre ?</h3>
         <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;font-size:17px;line-height:1.5">
-          <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>Au novice</strong> qui souhaite découvrir les codes du vestiaire masculin et poser les bases d'un style élégant.</span></li>
-          <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>À l'amateur éclairé</strong> qui veut approfondir ses connaissances et perfectionner son allure.</span></li>
-          <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>Au gentleman dans l'âme</strong> qui cultive le goût des belles pièces, des savoir-faire et des traditions sartoriales.</span></li>
+          <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>Au novice</strong> qui souhaite découvrir les codes du vestiaire masculin et poser les bases d’un style élégant.</span></li>
+          <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>À l’amateur éclairé</strong> qui veut approfondir ses connaissances et perfectionner son allure.</span></li>
+          <li style="display:flex;gap:12px"><span style="color:#7A5418">—</span><span><strong>Au gentleman dans l’âme</strong> qui cultive le goût des belles pièces, des savoir-faire et des traditions sartoriales.</span></li>
         </ul>
         <p style="margin:0;font-size:17px;line-height:1.65;text-wrap:pretty">Un ouvrage de référence à consulter et à conserver, pour soi ou pour offrir.</p>
       </div>
@@ -236,6 +243,7 @@ class Component extends DCLogic {
       secPad: m ? '56px 20px' : '96px 40px',
       footPad: m ? '44px 20px 56px' : '64px 40px',
       h2: m ? 32 : 44, quote: m ? 26 : 34,
+      introCols: m ? 'minmax(0,1fr)' : 'minmax(0,1.5fr) minmax(0,1fr)',
       colGap: m ? 32 : 48, blockTop: m ? 28 : 44,
       specCols: m ? 'minmax(96px,1fr) minmax(0,1fr) minmax(0,1fr)' : '1.2fr 1fr 1fr',
       parts: [
